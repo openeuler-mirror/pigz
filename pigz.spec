@@ -1,17 +1,18 @@
-Name:		pigz
-Version:	2.4
-Release:	5
-Summary:	A parallel implementation of gzip which utilizes multiple cores
-License:	Zlib
-URL:		http://www.zlib.net/pigz/
-Source0:	http://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
+#spec from tarball
+Name:     pigz
+Version:  2.4
+Release:  6
+Summary:  pigz is a parallel implementation of gzip which utilizes multiple cores
+License:  zlib
+Source0:  http://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
+URL:      http://www.zlib.net/pigz
 
-BuildRequires:	ncompress zlib-devel gcc
+BuildRequires: zlib-devel gcc
 
 %description
-Pigz, which stands for parallel implementation of gzip, is a fully functional
-replacement for gzip that exploits multiple processors and multiple cores to
-the hilt when compressing data.
+pigz, which stands for parallel implementation of gzip, is a fully functional replacement for gzip that
+exploits multiple processors and multiple cores to the hilt when compressing data. pigz was written by
+Mark Adler, and uses the zlib and pthread libraries.
 
 %package_help
 
@@ -22,11 +23,10 @@ the hilt when compressing data.
 %make_build CFLAGS="%{optflags}"
 
 %install
-install -p -D pigz %{buildroot}%{_bindir}/pigz
-pushd %{buildroot}%{_bindir}
-ln pigz unpigz
-popd
-install -p -D pigz.1 %{buildroot}%{_mandir}/man1/pigz.1
+mkdir -p ${RPM_BUILD_ROOT}%{_bindir}
+mkdir -p ${RPM_BUILD_ROOT}%{_mandir}/man1
+mv pigz unpigz ${RPM_BUILD_ROOT}%{_bindir}
+mv pigz.1 ${RPM_BUILD_ROOT}%{_mandir}/man1
 
 %check
 make test
@@ -40,6 +40,12 @@ make test
 %{_mandir}/man1/pigz.1*
 
 %changelog
+* Wed Oct 9 2019 shenyangyang<shenyangyang4@huawei.com> - 2.4-6
+- Type:enhancement
+- ID:NA
+- SUG:NA
+- DESC:modify spec according the spec in tarball
+
 * Tue Sep 24 2019 shenyangyang<shenyangyang4@huawei.com> - 2.4-5
 - Type:enhancement
 - ID:NA
@@ -48,3 +54,4 @@ make test
 
 * Fri Aug 09 2019 openEuler Buildteam <buildteam@openeuler.org> - 2.4-4
 - Package init
+
