@@ -1,7 +1,7 @@
 #spec from source code(%{name}-%{version}.tar.gz)
 Name:     pigz
 Version:  2.6
-Release:  1
+Release:  2
 Summary:  pigz is a parallel implementation of gzip which utilizes multiple cores
 License:  zlib
 Source0:  http://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
@@ -40,6 +40,12 @@ make test
 %{_mandir}/man1/pigz.1*
 
 %changelog
+* Tue Oct 25 2022 yanglongkang<yanglongkang@h-partners.com> - 2.6-2
+- Type: bugfix
+- ID: NA
+- SUG: NA
+- DESC: rebuild for next release
+
 * Fri Dec 3 2021 guozhaorui<guozhaorui1@huawei.com> - 2.6-1
 - Type: enhancement
 - ID: NA
