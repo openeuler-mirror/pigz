@@ -1,7 +1,7 @@
 #spec from source code(%{name}-%{version}.tar.gz)
 Name:     pigz
 Version:  2.7
-Release:  1
+Release:  2
 Summary:  pigz is a parallel implementation of gzip which utilizes multiple cores
 License:  zlib
 Source0:  http://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
@@ -15,6 +15,8 @@ exploits multiple processors and multiple cores to the hilt when compressing dat
 Mark Adler, and uses the zlib and pthread libraries.
 
 %package_help
+
+Patch0: 0001-pigz-fix-cc.patch
 
 %prep
 %autosetup -n %{name}-%{version} -p1
@@ -40,6 +42,9 @@ make test
 %{_mandir}/man1/pigz.1*
 
 %changelog
+* Sun Apr 23 2023 Zhang Chao <chaozhangm@isoftstone.com> - 2.7-2
+- Fix CC compiler support
+
 * Thu Jan 19 2023 zhangnan <zhangnan134@huawei.com> - 2.7-1
 - update to 2.7
 
